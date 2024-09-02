@@ -1,118 +1,119 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
+// Background Image
+const BackgroundImage= ()=>{
+  return(
+    <Image style={sty.backgroundImage} source={
+      require('./assets/img/pizzaBackground.png')
+    }/>
+  );
+}
+//Header text
+const HedederText=()=>{
+  return(
+    <View style={sty.hederTextArea}>
+      <Text style={sty.hederText}>
+        {'Welcome \n Back'}
       </Text>
     </View>
-  );
+  )
 }
+// Input Text Area
+const InputTextArea=()=>{
+  return(
+    <View style={sty.textFieldArea}>
+      {/* Email Field */}
+      <View style={sty.textField}>
+        <TextInput placeholder='User Email'
+                   placeholderTextColor={'#9d9d9d'}
+         style={sty.textInputField}/>
+      </View>
+
+      {/* Password Field */}
+      <View style={sty.textField}>
+        <TextInput placeholder='User Password'
+                   placeholderTextColor={'#9d9d9d'}
+                   secureTextEntry
+         style={sty.textInputField}/>
+      </View>
+
+    </View>
+  )
+}
+
+
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={sty.container}>
+
+      {/* Background image */}
+      <BackgroundImage/>
+
+      {/* Heder Text */}
+      <HedederText/>
+
+      <Icon name="arrow-forward-sharp" size={30} color="#900" />
+
+      <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
+
+        {/* Text Area */}
+        <InputTextArea/>  
+        
+      </KeyboardAwareScrollView>
+      
+
+    </View>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const sty =StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:'white',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  backgroundImage:{
+    width:'100%',
+    height:'100%',
+    resizeMode:'stretch',
+    position:'absolute'
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  hederTextArea:{
+    justifyContent:'center',
+    marginTop:250
   },
-  highlight: {
-    fontWeight: '700',
+  hederText:{
+    fontSize:80,
+    fontWeight:'600',
+    textAlign:'center',
+    color:'white'
   },
-});
+  textFieldArea:{
+    marginHorizontal:40,
+    marginTop:170
+  },
+  textField:{
+    backgroundColor:'white',
+    height:55,
+    borderRadius:20,
+    paddingHorizontal:20,
+    marginVertical:10
+  },
+  textInputField:{
+    fontSize:20,
+    color:'#3b3b3b',
+    fontWeight:'400',
+   
+    
+  }
+})
+
+
 
 export default App;
