@@ -17,7 +17,7 @@ const HedederText=()=>{
   return(
     <View style={sty.hederTextArea}>
       <Text style={sty.hederText}>
-        {'Welcome \n Back'}
+        {'Welcome \n Back \n Ba'}
       </Text>
     </View>
   )
