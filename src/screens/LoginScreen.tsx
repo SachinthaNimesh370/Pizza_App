@@ -107,6 +107,7 @@ const LoginScreen = () => {
        {/* Sign In Area */}
        <SignInButton/>
 
+       {/* Bottom  */}
        <BottamLayer/>
 
       
