@@ -17,7 +17,7 @@ const HedederText=()=>{
   return(
     <View style={sty.hederTextArea}>
       <Text style={sty.hederText}>
-        {'Welcome \n Back \n Ba'}
+        {'Welcome \n Back'}
       </Text>
     </View>
   )
@@ -58,13 +58,11 @@ function App(): React.JSX.Element {
       {/* Heder Text */}
       <HedederText/>
 
-      <Icon name="arrow-forward-sharp" size={30} color="#900" />
-
+      <Icon name="arrow-forward-sharp" size={50} color="#900" />
+      
+      {/* Text Area */}
       <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
-
-        {/* Text Area */}
-        <InputTextArea/>  
-        
+        <InputTextArea/> 
       </KeyboardAwareScrollView>
       
 
