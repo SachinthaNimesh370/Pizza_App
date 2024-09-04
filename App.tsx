@@ -53,12 +53,35 @@ const InputTextArea=()=>{
       <View style={sty.signInButtonArea}>
         <TouchableOpacity activeOpacity={0.5}>
           <View style={sty.signInButton}>
-            <Icon name="arrow-forward-sharp" style={sty.icon} size={45} color="white" />
+            <Icon name="arrow-forward-sharp"  size={45} color="white" />
           </View>
         </TouchableOpacity>
         
 
       </View>
+    </View>
+  );
+ }
+
+ const BottamLayer=()=>{
+  return(
+    <View style={sty.bottomArea}>
+      <TouchableOpacity activeOpacity={0.4}>
+        <View style={sty.signUpButtonField}>
+            <Text style={sty.signUpButton}>Sign Up</Text>
+        </View>
+      </TouchableOpacity>
+
+      
+    <View  style={sty.fgtPasswordButtonField}>
+      <TouchableOpacity activeOpacity={0.4}>
+        <Text style={sty.signUpButton}>Forget Password</Text>
+      </TouchableOpacity>
+    </View>
+      
+      
+
+      
     </View>
   );
  }
@@ -86,6 +109,8 @@ function App(): React.JSX.Element {
 
       {/* Sign In Area */}
       <SignInButton/>
+
+      <BottamLayer/>
 
       
 
@@ -161,9 +186,32 @@ const sty =StyleSheet.create({
     alignItems:'center'
     
   },
-  icon:{
+  bottomArea:{
+    flexDirection:'row',
+    marginHorizontal:40,
+    position:'absolute',
+    marginTop:900,
+  },
+  bottomLayer:{
+    flexDirection:'row'
+  },
+  signUpButtonField:{
+    height:50,
+    flex:1,
     
-  }
+  },
+  signUpButton:{
+    fontSize:20
+  },
+  fgtPasswordButtonField:{
+    height:50,
+    flex:1,
+    alignItems:'flex-end'
+    
+
+  },
+  
+  
 })
 
 
