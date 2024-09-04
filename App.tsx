@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -17,7 +17,7 @@ const HedederText=()=>{
   return(
     <View style={sty.hederTextArea}>
       <Text style={sty.hederText}>
-        {'Welcome \n Back \n Ba'}
+        {'Welcome \n Back'}
       </Text>
     </View>
   )
@@ -44,6 +44,47 @@ const InputTextArea=()=>{
     </View>
   )
 }
+ const SignInButton=()=>{
+  return(
+    <View style={sty.signInArea}>
+      <View style={sty.signInLabel}>
+        <Text style={sty.signInLabelText}>Sign In</Text>
+      </View>
+      <View style={sty.signInButtonArea}>
+        <TouchableOpacity activeOpacity={0.5}>
+          <View style={sty.signInButton}>
+            <Icon name="arrow-forward-sharp"  size={45} color="white" />
+          </View>
+        </TouchableOpacity>
+        
+
+      </View>
+    </View>
+  );
+ }
+
+ const BottamLayer=()=>{
+  return(
+    <View style={sty.bottomArea}>
+      <TouchableOpacity activeOpacity={0.4}>
+        <View style={sty.signUpButtonField}>
+            <Text style={sty.signUpButton}>Sign Up</Text>
+        </View>
+      </TouchableOpacity>
+
+      
+    <View  style={sty.fgtPasswordButtonField}>
+      <TouchableOpacity activeOpacity={0.4}>
+        <Text style={sty.signUpButton}>Forget Password</Text>
+      </TouchableOpacity>
+    </View>
+      
+      
+
+      
+    </View>
+  );
+ }
 
 
 
@@ -58,14 +99,19 @@ function App(): React.JSX.Element {
       {/* Heder Text */}
       <HedederText/>
 
-      <Icon name="arrow-forward-sharp" size={30} color="#900" />
-
+      <Icon name="arrow-forward-sharp" size={50} color="#900" />
+      
+      
+      {/* Text Area */}
       <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
-
-        {/* Text Area */}
-        <InputTextArea/>  
-        
+        <InputTextArea/> 
       </KeyboardAwareScrollView>
+
+      {/* Sign In Area */}
+      <SignInButton/>
+
+      <BottamLayer/>
+
       
 
     </View>
@@ -96,7 +142,7 @@ const sty =StyleSheet.create({
   },
   textFieldArea:{
     marginHorizontal:40,
-    marginTop:170
+    marginTop:100
   },
   textField:{
     backgroundColor:'white',
@@ -109,9 +155,63 @@ const sty =StyleSheet.create({
     fontSize:20,
     color:'#3b3b3b',
     fontWeight:'400',
-   
+  },
+  signInArea:{
+    flexDirection:'row',
+    marginHorizontal:40,
+    position:'absolute',
+    marginTop:780,
+
+  },
+  signInLabel:{
+    height:50,
+    flex:1,
+    justifyContent:'center',
+  },
+  signInLabelText:{
+    fontSize:35,
+    fontWeight:'500'
+  },
+  signInButtonArea:{
+    height:60,
+    flex:1,
+    alignItems:'flex-end'
+  },
+  signInButton:{
+    backgroundColor:'#367cfe',
+    height:60,
+    width:60,
+    borderRadius:50,
+    justifyContent:'center',
+    alignItems:'center'
     
-  }
+  },
+  bottomArea:{
+    flexDirection:'row',
+    marginHorizontal:40,
+    position:'absolute',
+    marginTop:900,
+  },
+  bottomLayer:{
+    flexDirection:'row'
+  },
+  signUpButtonField:{
+    height:50,
+    flex:1,
+    
+  },
+  signUpButton:{
+    fontSize:20
+  },
+  fgtPasswordButtonField:{
+    height:50,
+    flex:1,
+    alignItems:'flex-end'
+    
+
+  },
+  
+  
 })
 
 
