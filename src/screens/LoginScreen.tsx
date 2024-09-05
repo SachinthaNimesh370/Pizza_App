@@ -73,15 +73,11 @@ const BackgroundImage= ()=>{
         </TouchableOpacity>
   
         
-      <View  style={sty.fgtPasswordButtonField}>
-        <TouchableOpacity activeOpacity={0.4}>
-          <Text style={sty.signUpButton}>Forget Password</Text>
-        </TouchableOpacity>
-      </View>
-        
-        
-  
-        
+        <View  style={sty.fgtPasswordButtonField}>
+          <TouchableOpacity activeOpacity={0.4}>
+            <Text style={sty.signUpButton}>Forget Password</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
    }
@@ -95,9 +91,6 @@ const LoginScreen = () => {
 
       {/* Heder Text */}
        <HedederText/>
-
-       <Icon name="arrow-forward-sharp" size={50} color="#900" />
-      
       
        {/* Text Area */}
        <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>

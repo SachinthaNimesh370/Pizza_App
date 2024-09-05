@@ -1,4 +1,5 @@
 import React from 'react';
+import './gesture-handler';
 import { StyleSheet, View } from 'react-native';
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
