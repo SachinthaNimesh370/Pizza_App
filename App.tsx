@@ -8,8 +8,8 @@ function App(): React.JSX.Element {
   return (
 
     <View style={sty.container}>
-      {/* <LoginScreen/> */}
-      <SignUpScreen/>
+      <LoginScreen/>
+      {/* <SignUpScreen/> */}
     </View>
     
   );
