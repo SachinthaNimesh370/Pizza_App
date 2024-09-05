@@ -63,15 +63,19 @@ const BackgroundImage= ()=>{
     );
    }
   
-   const BottamLayer=()=>{
+   const BottamLayer=(p:any)=>{
+    const stack =p.stack;
+    const GoToSignUp=()=>{
+      stack.navigate('SignUp')
+    } 
     return(
       <View style={sty.bottomArea}>
-        <TouchableOpacity activeOpacity={0.4}>
+
+        <TouchableOpacity onPress={GoToSignUp} activeOpacity={0.4}>
           <View style={sty.signUpButtonField}>
               <Text style={sty.signUpButton}>Sign Up</Text>
           </View>
         </TouchableOpacity>
-  
         
         <View  style={sty.fgtPasswordButtonField}>
           <TouchableOpacity activeOpacity={0.4}>
@@ -82,7 +86,12 @@ const BackgroundImage= ()=>{
     );
    }
 
-const LoginScreen = () => {
+ 
+
+const LoginScreen = (props:any) => {
+
+  const stack = props.navigation;
+
   return (
     <View style={sty.container}>
 
@@ -94,14 +103,14 @@ const LoginScreen = () => {
       
        {/* Text Area */}
        <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
-         <InputTextArea/> 
+         <InputTextArea /> 
        </KeyboardAwareScrollView>
 
        {/* Sign In Area */}
-       <SignInButton/>
+       <SignInButton />
 
        {/* Bottom  */}
-       <BottamLayer/>
+       <BottamLayer stack={stack}/>
 
       
 
