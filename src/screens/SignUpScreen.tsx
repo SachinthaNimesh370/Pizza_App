@@ -52,14 +52,18 @@ const BackgroundImage= ()=>{
       </View>
     )
   }
-   const SignInButton=()=>{
+   const SignInButton=(p:any)=>{
+    const stack = p.stack;
+
+    
+
     return(
       <View style={sty.signInArea}>
         <View style={sty.signInLabel}>
           <Text style={sty.signInLabelText}>Sign Up</Text>
         </View>
         <View style={sty.signInButtonArea}>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity  activeOpacity={0.5}>
             <View style={sty.signInButton}>
               <Icon name="arrow-forward-sharp"  size={45} color="white" />
             </View>
@@ -71,11 +75,18 @@ const BackgroundImage= ()=>{
     );
    }
   
-   const BottamLayer=()=>{
+   const BottamLayer=(p:any)=>{
+
+    const stack = p.stack;
+
+    const GotoSignIn =()=>{
+      stack.navigate('Login');
+    }
+
     return(
       <View style={sty.bottomArea}>
         <View  style={sty.fgtPasswordButtonField}>
-            <TouchableOpacity activeOpacity={0.4}>
+            <TouchableOpacity onPress={GotoSignIn} activeOpacity={0.4}>
             <Text style={sty.signUpButton}>Sign In</Text>
             </TouchableOpacity>
         </View>
@@ -83,7 +94,9 @@ const BackgroundImage= ()=>{
     );
    }
 
-const SignUpScreen = () => {
+const SignUpScreen = (props:any) => {
+  const stack = props.navigation;
+
   return (
     <View style={sty.container}>
 
@@ -102,10 +115,10 @@ const SignUpScreen = () => {
        </KeyboardAwareScrollView>
 
        {/* Sign In Area */}
-       <SignInButton/>
+       <SignInButton stack={stack}/>
 
        {/* Bottom  */}
-       <BottamLayer/>
+       <BottamLayer stack={stack}/>
 
       
 

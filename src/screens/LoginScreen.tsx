@@ -44,14 +44,22 @@ const BackgroundImage= ()=>{
       </View>
     )
   }
-   const SignInButton=()=>{
+   const SignInButton=(p:any)=>{
+    const stack = p.stack;
+
+    const GotoHomePage=()=>{
+      stack.navigate('Home');
+    }
+
     return(
       <View style={sty.signInArea}>
         <View style={sty.signInLabel}>
           <Text style={sty.signInLabelText}>Sign In</Text>
         </View>
+
+        {/* Sign In Button */}
         <View style={sty.signInButtonArea}>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity onPress={GotoHomePage} activeOpacity={0.5}>
             <View style={sty.signInButton}>
               <Icon name="arrow-forward-sharp"  size={45} color="white" />
             </View>
@@ -65,6 +73,7 @@ const BackgroundImage= ()=>{
   
    const BottamLayer=(p:any)=>{
     const stack =p.stack;
+    
     const GoToSignUp=()=>{
       stack.navigate('SignUp')
     } 
@@ -107,7 +116,7 @@ const LoginScreen = (props:any) => {
        </KeyboardAwareScrollView>
 
        {/* Sign In Area */}
-       <SignInButton />
+       <SignInButton stack={stack}/>
 
        {/* Bottom  */}
        <BottamLayer stack={stack}/>
