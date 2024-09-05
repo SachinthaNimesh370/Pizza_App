@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -22,61 +22,87 @@ const BackgroundImage= ()=>{
       </View>
     )
   }
-  // Input Text Area
-  const InputTextArea=()=>{
-    return(
-      <View style={sty.textFieldArea}>
-        {/* Email Field */}
-        <View style={sty.textField}>
-          <TextInput placeholder='User Email'
-                     placeholderTextColor={'#9d9d9d'}
-           style={sty.textInputField}/>
-        </View>
   
-        {/* Password Field */}
-        <View style={sty.textField}>
-          <TextInput placeholder='User Password'
-                     placeholderTextColor={'#9d9d9d'}
-                     secureTextEntry
-           style={sty.textInputField}/>
-        </View>
-  
-      </View>
-    )
-  }
-   const SignInButton=(p:any)=>{
-    const stack = p.stack;
+   const SignInButton=( p : any)=>{
+
+    const stack =p.stack;
 
     const GotoHomePage=()=>{
-      stack.navigate('Home');
-    }
+      const email     = 'asd@gmail.com';
+      const password = '123';
+      if(email==userEmail && password==userPassword){
+        // Navigate to the Home screen
+        stack.navigate('Home');
+      }
+      else{
+        Alert.alert('Massage','Incorrect Email and Password')
+      }
+    };
+
+    
+
+    // Input Text Area
+    
+    const[userEmail,setUserEmail]= useState('')
+    const[userPassword,setUserPassword]= useState('')
+      
 
     return(
-      <View style={sty.signInArea}>
-        <View style={sty.signInLabel}>
-          <Text style={sty.signInLabelText}>Sign In</Text>
+      <View>
+        
+        {/* Text Area */}
+       <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
+       <View style={sty.textFieldArea}>
+          {/* Email Field */}
+          <View style={sty.textField}>
+            <TextInput placeholder='User Email'
+                      placeholderTextColor={'#9d9d9d'}
+                      style={sty.textInputField}
+                      onChangeText={(v)=>setUserEmail(v)}
+                      
+            />
+          </View>
+          {/* Password Field */}
+          <View style={sty.textField}>
+            <TextInput placeholder='User Password'
+                      placeholderTextColor={'#9d9d9d'}
+                      secureTextEntry
+                      style={sty.textInputField}
+                      onChangeText={(v)=>setUserPassword(v)}
+            />
+          </View>
         </View>
+       </KeyboardAwareScrollView>
+       
+        
+        {/* Sign In Label Right Side */}
+        <View style={sty.signInArea}>
+          <View style={sty.signInLabel}>
+            <Text style={sty.signInLabelText}>Sign In</Text>
+          </View>
 
         {/* Sign In Button */}
-        <View style={sty.signInButtonArea}>
-          <TouchableOpacity onPress={GotoHomePage} activeOpacity={0.5}>
-            <View style={sty.signInButton}>
-              <Icon name="arrow-forward-sharp"  size={45} color="white" />
-            </View>
-          </TouchableOpacity>
-          
-  
+          <View style={sty.signInButtonArea}>
+            <TouchableOpacity onPress={GotoHomePage} activeOpacity={0.5}>
+              <View style={sty.signInButton}>
+                <Icon name="arrow-forward-sharp"  size={45} color="white" />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
+      
     );
    }
   
    const BottamLayer=(p:any)=>{
+
     const stack =p.stack;
-    
+
     const GoToSignUp=()=>{
       stack.navigate('SignUp')
     } 
+
     return(
       <View style={sty.bottomArea}>
 
@@ -110,10 +136,8 @@ const LoginScreen = (props:any) => {
       {/* Heder Text */}
        <HedederText/>
       
-       {/* Text Area */}
-       <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
-         <InputTextArea /> 
-       </KeyboardAwareScrollView>
+       
+       
 
        {/* Sign In Area */}
        <SignInButton stack={stack}/>
@@ -167,7 +191,7 @@ const sty =StyleSheet.create({
       flexDirection:'row',
       marginHorizontal:40,
       position:'absolute',
-      marginTop:780,
+      marginTop:280,
   
     },
     signInLabel:{
