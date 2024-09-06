@@ -28,9 +28,10 @@ const BackgroundImage= ()=>{
     const stack =p.stack;
 
     const GotoHomePage=()=>{
+
       const email     = 'asd@gmail.com';
       const password = '123';
-      if(email==userEmail && password==userPassword){
+      if(email==userEmail.toLowerCase() && password==userPassword){
         // Navigate to the Home screen
         stack.navigate('Home');
       }
@@ -38,9 +39,6 @@ const BackgroundImage= ()=>{
         Alert.alert('Massage','Incorrect Email and Password')
       }
     };
-
-    
-
     // Input Text Area
     
     const[userEmail,setUserEmail]= useState('')
