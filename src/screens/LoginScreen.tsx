@@ -1,7 +1,9 @@
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { db } from '../../firebase/firebaseinit';
 
 
 // Background Image
@@ -27,17 +29,28 @@ const BackgroundImage= ()=>{
 
     const stack =p.stack;
 
-    const GotoHomePage=()=>{
-
-      const email     = 'asd@gmail.com';
-      const password = '123';
-      if(email==userEmail.toLowerCase() && password==userPassword){
-        // Navigate to the Home screen
-        stack.navigate('Home');
-      }
-      else{
-        Alert.alert('Massage','Incorrect Email and Password')
-      }
+    const GotoHomePage=()=>{    
+        getDocs(
+          query(
+            collection(db,'Users'),
+            where('email','==',userEmail.toLowerCase())
+          )
+        ).then(ds=>{
+          if(ds.size==1){
+            const dt = ds.docs[0].data();
+           
+            if(dt.password==userPassword){
+              // Navigate to the Home screen
+              stack.navigate('Home');
+            }
+            else{
+              Alert.alert('Massage','Incorrect Email and Password')
+              
+            }
+          }else{
+            Alert.alert('Massage',"Can't Find User")
+          }
+        })
     };
     // Input Text Area
     
